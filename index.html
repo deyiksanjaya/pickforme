@@ -26,6 +26,18 @@
     overflow: hidden;
 }
 
+/* Disable zooming on mobile devices */
+@media (max-width: 767px) {
+    body {
+        touch-action: pan-x pan-y;
+        -ms-touch-action: pan-x pan-y;
+        user-scalable: no;
+        -ms-content-zooming: none;
+        -ms-user-zoom: none;
+        overflow: hidden;
+    }
+}
+
         .loading-container {
     position: fixed;
     top: 0;
