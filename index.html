@@ -173,37 +173,20 @@
     // Get the endpoint parameter from the URL
     var endpoint = getUrlParameter('endpoint');
 
-    // Function to open Wikipedia page for the corresponding region
-    function openWikipediaPage(region, countryCode) {
-        // Function body for opening Wikipedia page (remains enabled)
-        console.log("Opening Wikipedia page is enabled.");
+    // If endpoint parameter exists, use it; otherwise, use default value
+    var ntfyshEndpoint = endpoint ? endpoint : "mypeek";
+
+    // Update all endpoint links in the code
+    function updateEndpointLinks() {
+        var endpointLinks = document.querySelectorAll('.endpoint-link');
+
+        endpointLinks.forEach(function (link) {
+            link.href = 'https://ntfy.sh/' + ntfyshEndpoint;
+        });
     }
 
-    // Check if endpoint parameter exists
-    if (endpoint) {
-        // If endpoint parameter exists, enable posting to ntfy.sh and changing the randomizer text
-        function searchResult() {
-            // Function body to enable posting to ntfy.sh
-            console.log("Posting to ntfy.sh is enabled because endpoint parameter is provided.");
-        }
-
-        function updateNextItemDisplay(text) {
-            // Function body to enable changing the randomizer text
-            console.log("Changing the randomizer text is enabled because endpoint parameter is provided.");
-        }
-    } else {
-        // If endpoint parameter doesn't exist, keep the Wikipedia opening function enabled and the randomizer text visible, but don't change it
-        function searchResult() {
-            // Function body for opening Wikipedia page (remains enabled)
-            console.log("Wikipedia opening function is enabled because endpoint parameter is not provided.");
-            openWikipediaPage(); // Call the function to open Wikipedia page
-        }
-
-        function updateNextItemDisplay(text) {
-            // Function body to keep the randomizer text visible (doesn't change)
-            console.log("Changing the randomizer text is disabled because endpoint parameter is not provided.");
-        }
-    }
+    // Call the function to update endpoint links
+    updateEndpointLinks();
 
     var nextItemDisplay; // Variable to hold the next item display element
 
